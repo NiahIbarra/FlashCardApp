@@ -38,7 +38,6 @@ export default function CreateDeckForm(){
                 <input 
                     className="d-flex col" 
                     name="name"
-                    type="text"
                     placeholder="Deck name"
                     value={formData.name} 
                     onChange={onChangeHandler}/>

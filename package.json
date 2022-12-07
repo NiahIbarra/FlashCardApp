@@ -43,6 +43,8 @@
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
-    "json-server": "^0.16.1"
+    "jest": "^26.6.0",
+    "json-server": "^0.16.1",
+    "supertest": "^6.3.1"
   }
 }

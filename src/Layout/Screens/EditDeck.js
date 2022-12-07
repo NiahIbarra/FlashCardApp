@@ -4,7 +4,10 @@ import { readDeck, updateDeck } from '../../utils/api';
 import BreadCrumbNav from '../Components/BreadCrumbNav';
 
 export default function EditDeck(){
-    const [deck, setDeck] = useState({});
+    const [deck, setDeck] = useState({
+      name: "",
+      description: ""
+    });
     const history = useHistory();
     const { deckId } = useParams();
     useEffect(() => {
@@ -12,8 +15,10 @@ export default function EditDeck(){
         async function deckLoad(){
             try {
                 const response = await readDeck(deckId, abortController.signal);
-                setDeck(response);
-                console.log(response);
+                setDeck({
+                  name: response.name,
+                  description: response.description
+                });
             } catch (error) {
                 if(error === "AbortError"){
                     console.log("Abort Error", error);
@@ -30,8 +35,7 @@ export default function EditDeck(){
         setDeck({...deck, [event.target.name]: event.target.value});
     }
 
-    const submitHandler = (event) => {
-        event.preventDefault();
+    const submitHandler = () => {
         const abortController = new AbortController();
         async function deckUpdate() {
             try{
@@ -59,8 +63,8 @@ export default function EditDeck(){
             <label className="d-flex col">Name</label>
             <input
               className="d-flex col"
+              type='text'
               name="name"
-              type="text"
               value={deck.name}
               onChange={onChangeHandler}
             />
