@@ -6,7 +6,8 @@ import BreadCrumbNav from '../Components/BreadCrumbNav';
 export default function EditDeck(){
     const [deck, setDeck] = useState({
       name: "",
-      description: ""
+      description: "",
+      id: ""
     });
     const history = useHistory();
     const { deckId } = useParams();
@@ -17,7 +18,8 @@ export default function EditDeck(){
                 const response = await readDeck(deckId, abortController.signal);
                 setDeck({
                   name: response.name,
-                  description: response.description
+                  description: response.description,
+                  id: response.id
                 });
             } catch (error) {
                 if(error === "AbortError"){

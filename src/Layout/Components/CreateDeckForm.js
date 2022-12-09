@@ -26,7 +26,6 @@ export default function CreateDeckForm(){
         }
         deckCreate();
         setFormData({ name: "", description: "" });
-        
         return () => abortController.abort();
     }
 
