@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import { createDeck } from '../../utils/api';
 
-export default function CreateDeckForm(){
-    const [formData, setFormData] = useState({ name: "", description: "" });
+export default function CreateDeckForm({ formData, setFormData }){
     const history = useHistory();
     const onChangeHandler = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value});
